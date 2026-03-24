@@ -2,6 +2,10 @@
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
+const littleEnemyImage = new Image();
+littleEnemyImage.src = "assets/littleenemy.png";
+littleEnemyImage.loaded = false;
+littleEnemyImage.onload = () => { littleEnemyImage.loaded = true; };
 
 // reusable AudioContext for sounds
 let audioCtx = null;

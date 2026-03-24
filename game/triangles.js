@@ -1,5 +1,13 @@
 // triangles.js - Triangle functions
 
+const starsImage = new Image();
+starsImage.src = "stars.png";
+
+let starsLoaded = false;
+
+starsImage.onload = () => {
+  starsLoaded = true;
+};
 function spawnTriangle() {
   triangles.push({
     x: Math.random() * (canvas.width - 120) + 60,
@@ -34,9 +42,9 @@ function spawnTriangle() {
         vy: (Math.random() - 0.5) * 4,
         color: '#ff3333',
         draw() {
-            if (explosionImage.loaded) {
+            if (starsImage.loaded) {
                 // draw explosion sprite centered on x,y
-                ctx.drawImage(explosionImage, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+                ctx.drawImage(starsImage, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
             } else {
                 // fallback to red triangle while image loads
                 ctx.fillStyle = this.color;

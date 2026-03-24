@@ -1,4 +1,3 @@
-// enemies.js - Enemy functions
 
 function spawnEnemy() {
   // small enemies stay a fixed size and use colored rectangles
@@ -143,33 +142,37 @@ function spawnBigEnemy() {
         this.vx = (this.vx / sp) * this.maxSpeed;
         this.vy = (this.vy / sp) * this.maxSpeed;
       }
-
+      
       // shooting logic
       this.shootTimer++;
       if (this.shootTimer >= 120) {
         this.shootTimer = 0;
         const angle = Math.random() * Math.PI * 2;
         enemyProjectiles.push({
-          x: this.x,
-          y: this.y,
-          vx: Math.cos(angle) * 4,
-          vy: Math.sin(angle) * 4,
-          size: 20,
-          color: "#00ff00",
+          x:this.x,
+          y:this.y,
+          vx:Math.cos(angle)*4,
+          vy:Math.sin(angle)*4,
+          size:10,
+          color:"#00ff00",
           draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.moveTo(this.x, this.y - this.size);
-            ctx.lineTo(this.x + this.size, this.y);
-            ctx.lineTo(this.x, this.y + this.size);
-            ctx.lineTo(this.x - this.size, this.y);
-            ctx.closePath();
-            ctx.fill();
-          },
+  if (littleEnemyImage.loaded) {
+    const size = 40;
+    ctx.drawImage(
+      littleEnemyImage,
+      this.x - size / 2,
+      this.y - size / 2,
+      size,
+      size,
+    );
+  } else {
+    // fallback (currently your diamond shape)
+  }
+},
           update() {
             this.x += this.vx;
             this.y += this.vy;
-          },
+          }
         });
       }
     },
@@ -322,22 +325,34 @@ function respawnBigEnemy(prev) {
           y: this.y,
           vx: Math.cos(angle) * 4,
           vy: Math.sin(angle) * 4,
-          size: 20,
+          size: 40,
           color: "#00ff00",
           draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.moveTo(this.x, this.y - this.size);
-            ctx.lineTo(this.x + this.size, this.y);
-            ctx.lineTo(this.x, this.y + this.size);
-            ctx.lineTo(this.x - this.size, this.y);
-            ctx.closePath();
-            ctx.fill();
+            if (littleEnemyImage.loaded) {
+              const drawSize = 40;  // bigger draw size
+              ctx.drawImage(
+                littleEnemyImage,
+                this.x - drawSize / 2,
+                this.y - drawSize / 2,
+                drawSize,
+                drawSize,
+              );
+            } else {
+              // fallback (currently your diamond shape)
+              ctx.fillStyle = this.color;
+              ctx.beginPath();
+              ctx.moveTo(this.x, this.y - this.size);
+              ctx.lineTo(this.x + this.size, this.y);
+              ctx.lineTo(this.x, this.y + this.size);
+              ctx.lineTo(this.x - this.size, this.y);
+              ctx.closePath();
+              ctx.fill();
+            }
           },
           update() {
             this.x += this.vx;
             this.y += this.vy;
-          },
+          }
         });
       }
     },
