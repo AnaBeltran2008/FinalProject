@@ -1,22 +1,44 @@
+#gameCanvas {
+  display: none;
+}
+#titleScreen {
+  color: rgb(0, 255, 229);
+  font-size: 30px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 162, 255);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     background-color: #1a1a1a;
     font-family: Arial, sans-serif;
+    position: relative;
 }
 canvas {
     border: 2px solid #fff;
     background-color: #000;
     cursor: crosshair;
+    margin: 20px auto;
+    display: block;
 }
-#score {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: #fff;
-    font-size: 20px;
+#startBtn {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#startBtn:hover {
+  background-color: #ff8533;
 }

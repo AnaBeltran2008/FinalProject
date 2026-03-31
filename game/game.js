@@ -1,3 +1,34 @@
+function startGame() {
+  gameLoop();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const startBtn = document.getElementById("startBtn");
+  const titleScreen = document.getElementById("titleScreen");
+  const canvas = document.getElementById("gameCanvas");
+
+  startBtn.addEventListener("click", () => {
+    titleScreen.style.display = "none";
+    canvas.style.display = "block";
+
+    startGame();
+  });
+
+  // Allow starting the game with Enter key
+  window.addEventListener("keydown", (e) => {
+    if (titleScreen.style.display !== "none" && e.key === "Enter") {
+      titleScreen.style.display = "none";
+      canvas.style.display = "block";
+      startGame();
+    }
+  });
+
+  // Focus the start button for keyboard accessibility
+  startBtn.focus();
+});
+
+
 // main.js - Main game logic
 
 // Game loop
@@ -207,4 +238,4 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
-gameLoop();
+

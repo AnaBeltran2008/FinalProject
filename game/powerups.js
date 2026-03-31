@@ -27,16 +27,7 @@ function spawnPowerUp() {
                 const w = this.radius * 2;
                 const h = this.radius * 2;
                 ctx.drawImage(treasureImage, this.x - w/2, this.y - h/2, w, h);
-            } else {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
-                // subtle outline
-                ctx.strokeStyle = '#ffd700';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
+            
         }
-    });
+    }});
 }
